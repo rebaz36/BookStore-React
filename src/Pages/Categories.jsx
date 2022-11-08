@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Categories() {
-  return <button type="button">Check Status</button>;
+  return <button type="submit">Check Status</button>;
 }
 
 export default Categories;
