@@ -7,7 +7,7 @@ const store = configureStore(
   {
     reducer: {
       books: booksReducer,
-      categories: categoriesReducer,
+      category: categoriesReducer,
     },
   },
   applyMiddleware(thunk),
