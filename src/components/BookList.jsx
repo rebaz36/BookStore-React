@@ -16,7 +16,7 @@ function Booklist() {
           <Book
             title={book.title}
             author={book.author}
-            item_id={book.item_id}
+            itemId={book.item_id}
             category={book.category}
           />
         </li>
