@@ -46,4 +46,13 @@ Book.defaultProps = {
   },
 };
 
+Book.propTypes = {
+  BOOK: PropTypes.shape({
+    title: PropTypes.string,
+    author: PropTypes.string,
+    item_id: PropTypes.string,
+    category: PropTypes.string.isRequired,
+  }),
+};
+
 export default Book;
