@@ -43,6 +43,14 @@ function AddBookForm() {
         onInput={(e) => setAuthor(e.target.value)}
         required
       />
+      <input
+        placeholder="Category"
+        type="text"
+        name="caregory"
+        value={category}
+        onInput={(e) => setCategory(e.target.value)}
+        required
+      />
       <button
         type="button"
         onClick={() => {
