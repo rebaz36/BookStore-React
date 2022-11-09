@@ -37,4 +37,13 @@ function Book({ BOOK }) {
   );
 }
 
+Book.defaultProps = {
+  BOOK: {
+    title: '',
+    author: '',
+    item_id: '',
+    category: '',
+  },
+};
+
 export default Book;
