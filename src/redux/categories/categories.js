@@ -1,37 +1,25 @@
-// actions
-const GET_CATEGORIES = '/src/redux/Categories/GET_CATEGORIES';
+import { CATEGORY_BOOK } from '../actions';
 
-// reducer
-export default function categoriesReducer(state = [], action) {
+// reducer section
+const categoriesReducer = (state = [], action) => {
   switch (action.type) {
-    case GET_CATEGORIES:
-      return action.payload;
+    case `${CATEGORY_BOOK}/fulfilled`:
+      return Object.keys(action.payload).map((key) => {
+        const { category } = action.payload[key][0];
+        return {
+          item_id: key,
+          category,
+        };
+      });
     default:
       return state;
   }
-}
-
-// key = kcM4ut7Kvp9QgSxmujh0
-const API_KEY = 'kcM4ut7Kvp9QgSxmujh0';
-
-// action creators
-export const getCategories = () => async (dispatch) => {
-  const categoryFetch = await fetch(
-    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${API_KEY}/books`,
-    {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
-    },
-  ).then((data) => data.json());
-  const category = [];
-  Object.keys(categoryFetch).forEach((e) => {
-    category.push({ ...categoryFetch[e][0], item_id: e });
-  });
-
-  dispatch({
-    type: GET_CATEGORIES,
-    payload: category,
-  });
 };
+
+// action creators section
+export const categoryBook = (book) => ({
+  type: CATEGORY_BOOK,
+  book,
+});
+
+export default categoriesReducer;
