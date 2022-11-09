@@ -51,22 +51,7 @@ function AddBookForm() {
         onInput={(e) => setCategory(e.target.value)}
         required
       />
-      <button
-        type="button"
-        onClick={() => {
-          dispatch(
-            addBook({
-              title,
-              author,
-              id: uuidv4(),
-            }),
-          );
-          setAuthor('');
-          setTitle('');
-        }}
-      >
-        Add Book
-      </button>
+      <button type="submit">Add Book</button>
     </form>
   );
 }
