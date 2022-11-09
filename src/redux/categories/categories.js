@@ -1,18 +1,25 @@
-// actions
-const CHECK = '/src/redux/Categories/CHECK';
+import { CATEGORY_BOOK } from '../actions';
 
-// reducer
-export default function categoriesReducer(state = [], action) {
+// reducer section
+const categoriesReducer = (state = [], action) => {
   switch (action.type) {
-    case CHECK:
-      return action.payload;
+    case `${CATEGORY_BOOK}/fulfilled`:
+      return Object.keys(action.payload).map((key) => {
+        const { category } = action.payload[key][0];
+        return {
+          item_id: key,
+          category,
+        };
+      });
     default:
       return state;
   }
-}
+};
 
-// action creators
-export const checkStatus = () => ({
-  type: CHECK,
-  payload: 'Work in Progress',
+// action creators section
+export const categoryBook = (book) => ({
+  type: CATEGORY_BOOK,
+  book,
 });
+
+export default categoriesReducer;

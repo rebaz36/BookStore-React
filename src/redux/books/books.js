@@ -1,47 +1,36 @@
-import { v4 as uuidv4 } from 'uuid';
+import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from '../actions';
 
-// Actions
-const ADD = 'bookstore-react/books/ADD';
-const REMOVE = 'bookstore-react/books/REMOVE';
-
-// Reducer
-export default function booksReducer(
-  state = [
-    {
-      title: 'First Book',
-      author: 'First Author',
-      id: uuidv4(),
-    },
-    {
-      title: 'Second Book',
-      author: 'Second Author',
-      id: uuidv4(),
-    },
-    {
-      title: 'Third Book',
-      author: 'Third Author',
-      id: uuidv4(),
-    },
-  ],
-  action = {}
-) {
+// Reducer section
+const booksReducer = (state = [], action) => {
   switch (action.type) {
-    case ADD:
-      return [...state, action.book];
-    case REMOVE:
-      return state.filter((book) => book.id !== action.book.id);
+    case `${ADD_BOOK}/fulfilled`:
+      return state.concat(action.meta.arg);
+    case `${REMOVE_BOOK}/fulfilled`:
+      return state.filter((book) => book.item_id !== action.meta.arg);
+    case `${GET_BOOKS}/fulfilled`:
+      return Object.keys(action.payload).map((key) => {
+        const { title, author, category } = action.payload[key][0];
+        return {
+          item_id: key,
+          title,
+          author,
+          category,
+        };
+      });
     default:
       return state;
   }
-}
+};
 
-// Action Creators
+// Action creators section
 export const addBook = (book) => ({
-  type: ADD,
+  type: ADD_BOOK,
   book,
 });
 
 export const removeBook = (book) => ({
-  type: REMOVE,
+  type: REMOVE_BOOK,
   book,
 });
+
+export default booksReducer;
