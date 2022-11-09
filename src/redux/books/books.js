@@ -3,6 +3,9 @@ const GET_BOOKS = 'bookstore-react/books/GET_BOOKS';
 const ADD = 'bookstore-react/books/ADD';
 const REMOVE = 'bookstore-react/books/REMOVE';
 
+// key = kcM4ut7Kvp9QgSxmujh0
+const API_KEY = 'kcM4ut7Kvp9QgSxmujh0';
+
 // Reducer
 export default function booksReducer(state = [], action = {}) {
   switch (action.type) {
@@ -16,9 +19,6 @@ export default function booksReducer(state = [], action = {}) {
       return state;
   }
 }
-
-// key = kcM4ut7Kvp9QgSxmujh0
-const API_KEY = 'kcM4ut7Kvp9QgSxmujh0';
 
 // Action Creators
 export const getBooks = () => async (dispatch) => {
