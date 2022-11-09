@@ -11,13 +11,15 @@ export default function booksReducer(state = [], action = {}) {
     case ADD:
       return [...state, action.book];
     case REMOVE:
-      return state.filter((book) => book.item_id !== action.book.item_id);
+      return state.filter((book) => book.item_id !== action.item_id);
     default:
       return state;
   }
 }
+
 // key = kcM4ut7Kvp9QgSxmujh0
 const API_KEY = 'kcM4ut7Kvp9QgSxmujh0';
+
 // Action Creators
 export const getBooks = () => async (dispatch) => {
   const booksFetch = await fetch(
@@ -62,19 +64,22 @@ export const addBook = (book) => async (dispatch) => {
   );
 };
 
-export const removeBook = (book) => async (dispatch) => {
+export const removeBook = (itemId) => async (dispatch) => {
   await fetch(
-    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${API_KEY}/books/${book.item_id}`,
+    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${API_KEY}/books/${itemId}`,
     {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        item_id: itemId,
+      }),
     },
   ).then(
     dispatch({
       type: REMOVE,
-      book,
+      itemId,
     }),
   );
 };
