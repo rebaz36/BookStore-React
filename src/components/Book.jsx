@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/books';
 
-// eslint-disable-next-line object-curly-newline
-function Book({ title, author, itemId, category }) {
+function Book({
+  title, author, itemId, category
+}) {
   const dispatch = useDispatch();
 
   return (
@@ -22,9 +23,7 @@ function Book({ title, author, itemId, category }) {
         type="button"
         onClick={() => {
           dispatch(
-            removeBook({
-              itemId,
-            }),
+            removeBook(itemId),
           );
         }}
       >

@@ -8,7 +8,7 @@ function Booklist() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBooks());
-  });
+  }, [dispatch]);
   return (
     <ul>
       {books.map((book) => (
