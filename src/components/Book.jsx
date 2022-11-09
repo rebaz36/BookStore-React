@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/books';
+import { removeBook } from '../redux/books/BooksAPI';
 
-function Book({
-  title, author, itemId, category
-}) {
+function Book({ BOOK }) {
+  const {
+    title,
+    author,
+    // eslint-disable-next-line camelcase
+    item_id,
+    category
+  } = BOOK;
+
   const dispatch = useDispatch();
 
   return (
-    <>
+    <li>
       <span>
         {title}
         <span> by </span>
@@ -22,22 +28,13 @@ function Book({
       <button
         type="button"
         onClick={() => {
-          dispatch(
-            removeBook(itemId),
-          );
+          dispatch(removeBook(item_id));
         }}
       >
         Remove
       </button>
-    </>
+    </li>
   );
 }
-
-Book.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  itemId: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-};
 
 export default Book;
