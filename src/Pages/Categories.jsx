@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCategories } from '../redux/categories/categories';
+import getCategories from '../redux/categories/categoriesAPI';
 
 function Categories() {
-  const categories = useSelector((state) => state.category);
+  const books = useSelector((state) => state.category);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
-  return categories.map((category) => (
-    <li key={category.item_id}>{category.category}</li>
-  ));
+
+  return books.map((book) => <li key={book.item_id}>{book.category}</li>);
 }
 
 export default Categories;
