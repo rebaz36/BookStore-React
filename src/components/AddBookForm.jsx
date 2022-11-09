@@ -33,6 +33,7 @@ function AddBookForm() {
         name="title"
         value={title}
         onInput={(e) => setTitle(e.target.value)}
+        required
       />
       <input
         placeholder="Author Name"
@@ -40,6 +41,7 @@ function AddBookForm() {
         name="author"
         value={author}
         onInput={(e) => setAuthor(e.target.value)}
+        required
       />
       <button
         type="button"
