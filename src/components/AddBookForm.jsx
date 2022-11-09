@@ -7,9 +7,25 @@ function AddBookForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
+
+  function postBook(e) {
+    e.preventDefault();
+    dispatch(
+      addBook({
+        title,
+        author,
+        category,
+        item_id: uuidv4(),
+      }),
+    );
+    setTitle('');
+    setAuthor('');
+    setCategory('');
+  }
 
   return (
-    <form>
+    <form onSubmit={postBook}>
       <h2>Add a book</h2>
       <input
         placeholder="Book Title"
@@ -33,7 +49,7 @@ function AddBookForm() {
               title,
               author,
               id: uuidv4(),
-            })
+            }),
           );
           setAuthor('');
           setTitle('');
