@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Header from './Components/Header';
-import BooksView from './Pages/Books';
-import Categories from './Pages/Categories';
+import Header from './Component/Header';
+import BooksView from './Page/Books';
+import Categories from './Page/Categories';
 import './App.css';
 
 function App() {
