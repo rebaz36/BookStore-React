@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # BookStore - React
+This project is created with react, the project uses an API to store books information. user can add the books they are currently reading and indicate their progress while reading.
 
 ## Built With
   - JavaScript
