@@ -1,4 +1,4 @@
-import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from '../actions';
+import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from '../Actions';
 
 // Reducer section
 const booksReducer = (state = [], action) => {

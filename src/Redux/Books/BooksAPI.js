@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from '../actions';
+import { GET_BOOKS, ADD_BOOK, REMOVE_BOOK } from '../Actions';
 
 // API URL
 const URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/kcM4ut7Kvp9QgSxmujh0/books';

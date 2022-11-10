@@ -57,12 +57,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Twitter: [@rebaz415](https://twitter.com/rebaz415)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/rebazf/)
 
-👤 **Author2: Contribute to get your name here**
-
-- GitHub: [@ThisCouldBeYou]()
-- Twitter: [@ThisCouldBeYou]()
-- LinkedIn: [@ThisCouldBeYou]()
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
@@ -79,4 +73,4 @@ List of Aknnowledgments goes here
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
