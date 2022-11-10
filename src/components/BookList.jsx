@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { getBooks } from '../redux/books/BooksAPI';
+import { getBooks } from '../Redux/Books/BooksAPI';
 import Book from './Book';
 
 function Booklist() {

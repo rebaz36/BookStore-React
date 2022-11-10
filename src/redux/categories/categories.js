@@ -1,4 +1,4 @@
-import { CATEGORY_BOOK } from '../actions';
+import { CATEGORY_BOOK } from '../Actions';
 
 // reducer section
 const categoriesReducer = (state = [], action) => {
