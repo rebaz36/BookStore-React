@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import getCategories from '../Redux/Categories/CategoriesAPI';
+import './Categories.css';
 
 function Categories() {
   const books = useSelector((state) => state.category);
