@@ -54,7 +54,7 @@ function AddBookForm() {
           }}
           required
         >
-          <option value="">Category</option>
+          <option defaultValue="">Category</option>
           <option value="Historical">Historical</option>
           <option value="Horror">Horror</option>
           <option value="Thriller">Thriller</option>
