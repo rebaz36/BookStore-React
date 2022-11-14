@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../Redux/Books/BooksAPI';
@@ -10,6 +10,14 @@ function AddBookForm() {
   const categoryRef = useRef();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem('title') || localStorage.getItem('author') || localStorage.getItem('category')) {
+      titleRef.current.value = localStorage.getItem('title');
+      authorRef.current.value = localStorage.getItem('author');
+      categoryRef.current.value = localStorage.getItem('category');
+    }
+  }, []);
 
   function postBook(e) {
     e.preventDefault();
@@ -37,6 +45,7 @@ function AddBookForm() {
           type="text"
           name="title"
           ref={titleRef}
+          onChange={() => { localStorage.setItem('title', titleRef.current.value); }}
           required
         />
         <input
@@ -44,12 +53,14 @@ function AddBookForm() {
           type="text"
           name="author"
           ref={authorRef}
+          onChange={() => { localStorage.setItem('author', authorRef.current.value); }}
           required
         />
         <select
           className="categoryInput"
           name="list"
           ref={categoryRef}
+          onChange={() => { localStorage.setItem('category', categoryRef.current.value); }}
           required
         >
           <option defaultValue="">Category</option>
