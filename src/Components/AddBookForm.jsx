@@ -17,7 +17,7 @@ function AddBookForm() {
     const author = authorRef.current.value;
     const category = categoryRef.current.value;
     const book = {
-      id: uuidv4(),
+      item_id: uuidv4(),
       title,
       author,
       category,
