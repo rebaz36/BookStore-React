@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../Redux/Books/BooksAPI';
 import './AddBookForm.css';
 
 function AddBookForm() {
+  const titleRef = useRef();
+  const authorRef = useRef();
+  const categoryRef = useRef();
+
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [category, setCategory] = useState('');
 
   function postBook(e) {
     e.preventDefault();
-
-    dispatch(
-      addBook({
-        title,
-        author,
-        category,
-        item_id: uuidv4(),
-      }),
-    );
-    setTitle('');
-    setAuthor('');
-    setCategory('');
+    const title = titleRef.current.value;
+    const author = authorRef.current.value;
+    const category = categoryRef.current.value;
+    const book = {
+      id: uuidv4(),
+      title,
+      author,
+      category,
+    };
+    dispatch(addBook(book));
+    titleRef.current.value = '';
+    authorRef.current.value = '';
+    categoryRef.current.value = 'Category';
   }
 
   return (
@@ -34,24 +36,20 @@ function AddBookForm() {
           placeholder="Book Title"
           type="text"
           name="title"
-          value={title}
-          onInput={(e) => setTitle(e.target.value)}
+          ref={titleRef}
           required
         />
         <input
           placeholder="Author Name"
           type="text"
           name="author"
-          value={author}
-          onInput={(e) => setAuthor(e.target.value)}
+          ref={authorRef}
           required
         />
         <select
           className="categoryInput"
           name="list"
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
+          ref={categoryRef}
           required
         >
           <option defaultValue="">Category</option>
